@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="moon"></div>
+    <h2>
+        冬至<br>
+        <span>The Winter Solstice</span>
+    </h2>
+    <div class="land"></div>
+    <!-- 山 -->
+    <div class="mountain"></div>
+    <div class="mountain two"></div>
+    <!-- 雪人 -->
+    <div class="snowman">
+        <div class="head">
+            <div class="eye"></div>
+            <div class="eye right"></div>
+            <div class="nose"></div>
+            <div class="mouth"></div>
+        </div>
+        <!-- 围巾 -->
+        <div class="scarf"></div>
+        <div class="body">
+            <div class="hand"></div>
+            <div class="hand right"></div>
+        </div>
+    </div>
+    <!-- 下雪 -->
+    <div class="snow-box">
+        <div id="snowAll"></div>
+    </div>
+    <div class="snow-box" id="cloneBox"></div>
+    <script>
+        (function () {
+            // 随机0-100函数
+            function randomNum() {
+                return parseFloat(Math.random() * 100);
+            }
+            let snowAll = document.getElementById('snowAll');
+            // 复制一份
+            let cloneBox = document.getElementById('cloneBox');
+            // 随机50片雪花
+            for (let i = 0; i < 100; i++) {
+                let flake = document.createElement('i');
+                flake.className = 'snowflake';
+                flake.style.left = randomNum() + '%';
+                flake.style.top = randomNum() + '%';
+                // 控制雪花大小
+                if (i % 4 == 1) {
+                    flake.style.width = '4px';
+                    flake.style.height = '4px';
+                }
+                if (i % 4 == 2) {
+                    flake.style.width = '3px';
+                    flake.style.height = '3px';
+                }
+                if (i % 4 == 3) {
+                    flake.style.width = '2px';
+                    flake.style.height = '2px';
+                }
+                snowAll.appendChild(flake);
+            }
+            // 复制一份
+            let snowAll2 = snowAll.cloneNode(true);
+            cloneBox.appendChild(snowAll2);
+        })()
+    </script>
+</body>
+
+</html>
